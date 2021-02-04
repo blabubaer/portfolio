@@ -1,0 +1,45 @@
+{% extends 'jobs\base.html'  %}
+
+{% load static %}
+
+{% block content %}
+
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Hello, I'm Marten.</h1>
+        <p class="lead text-muted">I'm a former nautical surveyor turned programmer. On this webpage I want to show you some of the stuff that I created during my programming learning process. Starting with simple small Javascript games to complete Web-Apps. Enjoy!</p>
+        <p>
+          <a href="mailto:mgransow@gmail.com" class="btn btn-primary my-2">E-Mail Me</a>
+        </p>
+        <img src="{% static 'me.jpg' %}" height='300' width='300' >
+      </div>
+    </div>
+  </section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+      {% for project in projects.all %}
+      <div class="col">
+        <div class="card shadow-sm" style="padding-top: 5px;">
+          <div class="card-header">
+            {{ project.title }}
+          </div>
+          <img src="{{ project.image.url }}" alt="Image-File" class="card-img-top img-fluid" style="max-height: 300px; width:auto">
+          <div class="card-body">
+            <p class="card-text">{{ project.summary }} </p>
+            <a href=" {{project.git_page}}" class="card-link">GitHub page</a>
+            <a href="{{project.viewer}}" class="card-link">Page</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
